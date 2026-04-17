@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: e4b0300d54235a340a64f439cc438dc8
+  productGUID: e4c7da12f67d25c4393a62f7d5996862
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: LostAxelotl
+  productName: DesertPlatformer
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -143,7 +143,8 @@ PlayerSettings:
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
   bundleVersion: 1.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -601,14 +602,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: LostAxelotl
+  metroPackageName: DesertPlatformer
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: LostAxelotl
+  metroApplicationDescription: DesertPlatformer
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -679,10 +680,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: df576206-5c8c-4b5e-a79d-e91bf299e296
+  cloudProjectId: 62795232-949e-49d2-90fb-8b355f5d22d2
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: LostAxelotl
+  projectName: DesertPlatformer
   organizationId: stewie_yeet
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
