@@ -371,8 +371,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1438866675}
-        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
-        m_MethodName: OpenLevel
+        m_TargetAssemblyTypeName: MainMenuLevelSelector, Assembly-CSharp
+        m_MethodName: SelectLevel
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1022,8 +1022,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1438866675}
-        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
-        m_MethodName: OpenLevel
+        m_TargetAssemblyTypeName: MainMenuLevelSelector, Assembly-CSharp
+        m_MethodName: SelectLevel
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1723,8 +1723,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1438866675}
-        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
-        m_MethodName: OpenLevel
+        m_TargetAssemblyTypeName: MainMenuLevelSelector, Assembly-CSharp
+        m_MethodName: SelectLevel
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4298,8 +4298,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1438866675}
-        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
-        m_MethodName: OpenLevel
+        m_TargetAssemblyTypeName: MainMenuLevelSelector, Assembly-CSharp
+        m_MethodName: SelectLevel
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4955,6 +4955,8 @@ MonoBehaviour:
     destinationPoint: {fileID: 2056133457}
   - sceneName: Movement_V1
     destinationPoint: {fileID: 664589218}
+  - sceneName: Level2_Sergio
+    destinationPoint: {fileID: 1255000809}
 --- !u!114 &1438866676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5898,7 +5900,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2056133457}
   m_Layer: 0
-  m_Name: ' Tutorial Point'
+  m_Name: Tutorial Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

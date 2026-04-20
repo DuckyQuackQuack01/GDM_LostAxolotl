@@ -8,24 +8,28 @@ public class WaterPickup : MonoBehaviour
     [Header("Effects")]
     public GameObject pickupEffect;
 
+    private bool collected = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player"))
+        if (!other.CompareTag("Player") || collected)
             return;
 
-        //Add water
+        collected = true;
+
         WaterManager.Instance.AddWater(waterAmount);
 
-
-
-        //VFX
         if (pickupEffect != null)
         {
             Instantiate(pickupEffect, transform.position, Quaternion.identity);
         }
 
-        //Remove pickup
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+    }
+
+    public void ResetPickup()
+    {
+        collected = false;
+        gameObject.SetActive(true);
     }
 }
