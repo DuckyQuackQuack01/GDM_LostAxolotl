@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Demo_Sergio.unity
     guid: 99bc98901499215428140039a8fd4cb5
+  - enabled: 1
+    path: Assets/Scenes/Level2_Sergio.unity
+    guid: 6700c86aae1cb6a488412a3270c6ce77
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

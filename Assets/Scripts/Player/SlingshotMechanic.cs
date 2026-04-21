@@ -290,6 +290,11 @@ public class SlingshotMechanic : MonoBehaviour
     {
         WaterManager.Instance.ResetWater();
 
+        if (WaterPickupResetter.Instance != null)
+        {
+            WaterPickupResetter.Instance.ResetAllPickups();
+        }
+
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;
 
