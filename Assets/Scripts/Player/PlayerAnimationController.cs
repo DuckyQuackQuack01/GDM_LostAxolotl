@@ -33,6 +33,10 @@ public class PlayerAnimationController : MonoBehaviour
         {
             startMousePosition = Input.mousePosition;
         }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            OnMouseRelease();
+        }
         if (Input.GetMouseButton(0) && currentVelocity == Vector2.zero)
         {
             UpdateSlingshot();
@@ -57,7 +61,7 @@ public class PlayerAnimationController : MonoBehaviour
     }
     private void OnMouseRelease()
     {
-        Debug.Log("Mouse released");
+        anim.Play("StartingToFly");
     }
 
     private void UpdateSlingshotRotation(Vector2 directionAway)
@@ -75,7 +79,6 @@ public class PlayerAnimationController : MonoBehaviour
         {
             percentage = 0.99f;
         }
-        Debug.Log(percentage);
         anim.Play("ReadyingSlingshot", 0, percentage);
     }
 
