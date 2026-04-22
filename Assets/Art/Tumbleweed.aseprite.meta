@@ -125,7 +125,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Tumbleweed
     originalName: 
-    pivot: {x: 0.5, y: -0.08}
+    pivot: {x: 0.5185185, y: -0.12}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -133,7 +133,7 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 28
+      width: 27
       height: 25
     spriteID: ebc6ec8fbb6cd3a4d9e657ca476501d0
     spriteBone: []
@@ -163,8 +163,8 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 2
-        y: 2
-        width: 28
+        y: 3
+        width: 27
         height: 25
       spriteId: ebc6ec8fbb6cd3a4d9e657ca476501d0
     linkedCells: []
