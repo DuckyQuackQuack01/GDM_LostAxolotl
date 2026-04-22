@@ -11,7 +11,13 @@ public class WaterBarUI : MonoBehaviour
 
     void Start()
     {
-        WaterManager.Instance.OnWaterChanged += UpdateBar;
+        if (WaterManager.Instance != null)
+        {
+            WaterManager.Instance.OnWaterChanged += UpdateBar;
+
+            // NEW: force UI to match current water immediately
+            UpdateBar(WaterManager.Instance.currentWater, WaterManager.Instance.maxWater);
+        }
     }
 
     void UpdateBar(float current, float max)
@@ -19,22 +25,26 @@ public class WaterBarUI : MonoBehaviour
         currentWater = current;
         maxWater = max;
 
-        float fill = current / max;
+        if (maxWater <= 0f)
+            maxWater = 1f;
+
+        float fill = currentWater / maxWater;
 
         fillImage.fillAmount = fill;
 
-        // IMPORTANT: preview should match fill by default
+        // preview should match fill by default
         previewImage.fillAmount = fill;
     }
 
-    // Call this while dragging
     public void ShowPreview(float predictedWater)
     {
-        float clamped = Mathf.Clamp(predictedWater, 0, maxWater);
+        if (maxWater <= 0f)
+            return;
 
+        float clamped = Mathf.Clamp(predictedWater, 0, maxWater);
         float previewFill = clamped / maxWater;
 
-        // ONLY update preview (do NOT touch fillImage here)
+        // only update preview
         previewImage.fillAmount = previewFill;
     }
 
