@@ -4953,10 +4953,10 @@ MonoBehaviour:
   levels:
   - sceneName: Demo_Sergio
     destinationPoint: {fileID: 2056133457}
-  - sceneName: Movement_V1
-    destinationPoint: {fileID: 664589218}
   - sceneName: Level2_Sergio
     destinationPoint: {fileID: 1255000809}
+  - sceneName: Level3_Sinan
+    destinationPoint: {fileID: 131947565}
 --- !u!114 &1438866676
 MonoBehaviour:
   m_ObjectHideFlags: 0

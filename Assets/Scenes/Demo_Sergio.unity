@@ -703,7 +703,7 @@ MonoBehaviour:
   fellPopup: {fileID: 1422597591}
   maxDragDistance: 3
   launchPower: 10
-  powerBoost: 5
+  powerBoost: 10
   waterCostMultiplier: 10
   maxWaterPerLaunch: 30
   minDragThreshold: 0.2

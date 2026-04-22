@@ -8,7 +8,7 @@ public class SlingshotMechanic : MonoBehaviour
     [Header("Slingshot Settings")]
     public float maxDragDistance = 3f;
     public float launchPower = 10f;
-    public float powerBoost = 1.45f; // NEW
+    public float powerBoost = 1.45f;
 
     [Header("Water Settings")]
     public float waterCostMultiplier = 10f;
@@ -22,6 +22,8 @@ public class SlingshotMechanic : MonoBehaviour
 
     public WaterBarUI waterBarUI;
 
+    public bool hasLanded = true;
+
     private GameObject[] dots;
     private Rigidbody2D rb;
 
@@ -30,7 +32,7 @@ public class SlingshotMechanic : MonoBehaviour
 
     private bool isDragging = false;
 
-    private bool onPlatform = false;
+    private bool onPlatform = true;
     private MovingPlatform currentPlatform;
 
     private Transform platformTransform;
@@ -71,10 +73,10 @@ public class SlingshotMechanic : MonoBehaviour
 
     void Update()
     {
-        // NEW + OLD input merged
+
         if (Input.GetMouseButtonDown(0))
         {
-            if (WaterManager.Instance.currentWater > 0)
+            if (hasLanded && WaterManager.Instance.currentWater > 0)
             {
                 isDragging = true;
                 rb.linearVelocity = Vector2.zero;
@@ -178,6 +180,8 @@ public class SlingshotMechanic : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.linearVelocity = launchDir * (launchPower * pullPercent);
 
+        hasLanded = false;
+
         HideDots();
     }
 
@@ -229,6 +233,7 @@ public class SlingshotMechanic : MonoBehaviour
             transform.position += new Vector3(0, 0.02f, 0);
 
             onPlatform = true;
+            hasLanded = true;
             startPos = transform.position;
 
             ScoreManager.AddPoint();
@@ -267,6 +272,7 @@ public class SlingshotMechanic : MonoBehaviour
     void HandleFailState()
     {
         WaterManager.Instance.ResetWater();
+        hasLanded = true;
 
         if (WaterPickupResetter.Instance != null)
             WaterPickupResetter.Instance.ResetAllPickups();

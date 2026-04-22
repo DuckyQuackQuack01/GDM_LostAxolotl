@@ -1185,6 +1185,7 @@ MonoBehaviour:
   fellPopup: {fileID: 1422597591}
   maxDragDistance: 3
   launchPower: 10
+  powerBoost: 10
   waterCostMultiplier: 10
   maxWaterPerLaunch: 30
   minDragThreshold: 0.2
@@ -1192,6 +1193,7 @@ MonoBehaviour:
   dotCount: 40
   dotSpacing: 0.02
   waterBarUI: {fileID: 2138401753}
+  hasLanded: 1
   cameraMovement: {fileID: 1537137819}
   sandstorm: {fileID: 387040603}
 --- !u!58 &202528985
