@@ -26,6 +26,8 @@ public class SlingshotMechanic : MonoBehaviour
     public bool hasLanded = true;
     public PlayerPlatformWalk platformWalk;
 
+    public MapViewToggle mapViewToggle;
+
     private GameObject[] dots;
     private Rigidbody2D rb;
 
@@ -77,6 +79,12 @@ public class SlingshotMechanic : MonoBehaviour
 
     void Update()
     {
+        if (mapViewToggle != null && mapViewToggle.IsMapViewActive)
+        {
+            CancelInteraction();
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             if (hasLanded && WaterManager.Instance != null && WaterManager.Instance.currentWater > 0)
@@ -347,5 +355,15 @@ public class SlingshotMechanic : MonoBehaviour
     void HideFellPopup()
     {
         fellPopup.SetActive(false);
+    }
+
+    public void CancelInteraction()
+    {
+        isDragging = false;
+
+        if (waterBarUI != null)
+            waterBarUI.ResetPreview();
+
+        HideDots();
     }
 }
