@@ -13,7 +13,7 @@ public class PlayerAnimationController : MonoBehaviour
     Vector3 startMousePosition;
 
     public Animator anim;
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -51,7 +51,7 @@ public class PlayerAnimationController : MonoBehaviour
         }
     }
 
-    void UpdateRotation()
+    private void UpdateRotation()
     {
         float angle = Mathf.Atan2(currentVelocity.y, currentVelocity.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -64,20 +64,16 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void UpdateSlingshot()
     {
-
         Vector3 directionAway = startMousePosition - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         UpdateSlingshotRotation(directionAway);
         UpdateSlingshotAnimation(directionAway);
     }
-    private void OnMouseRelease()
-    {
-        anim.Play("StartingToFly");
-    }
+
 
     private void UpdateSlingshotRotation(Vector2 directionAway)
     {
         float angle = Mathf.Atan2(directionAway.y, directionAway.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(transform.position.x, transform.position.y, angle);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private void UpdateSlingshotAnimation(Vector2 directionAway)
@@ -88,6 +84,11 @@ public class PlayerAnimationController : MonoBehaviour
             percentage = 0.99f;
         }
         anim.Play("ReadyingSlingshot", 0, percentage);
+    }
+
+    private void OnMouseRelease()
+    {
+        anim.Play("StartingToFly");
     }
 
     private void PlayIdleAnim()
