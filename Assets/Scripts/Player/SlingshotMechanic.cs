@@ -115,13 +115,13 @@ public class SlingshotMechanic : MonoBehaviour
 
             float dragDistance = dragVector.magnitude;
             float waterCost = Mathf.Min(dragDistance * waterCostMultiplier, maxWaterPerLaunch);
-            float predictedWater = WaterManager.Instance.currentWater - waterCost;
-
             if (waterBarUI != null)
-                waterBarUI.ShowPreview(predictedWater);
+                waterBarUI.ShowPreviewCost(waterCost);
 
             if (waterBarUI != null && waterBarUI.previewImage != null)
             {
+                float predictedWater = WaterManager.Instance.currentWater - waterCost;
+
                 waterBarUI.previewImage.color =
                     predictedWater < 0 ? Color.red :
                     new Color(0.5f, 0.8f, 1f, 0.6f);
@@ -248,11 +248,9 @@ public class SlingshotMechanic : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Triggered with: " + other.name + " tag: " + other.tag);
 
         if (other.CompareTag("PlatformTop"))
         {
-            Debug.Log("Landed on PlatformTop");
 
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
@@ -281,21 +279,13 @@ public class SlingshotMechanic : MonoBehaviour
                 lastPlatformPosition = platformTransform.position;
             }
 
-            Debug.Log("platformWalk assigned? " + (platformWalk != null));
 
             PlatformWalkBounds bounds = other.GetComponentInParent<PlatformWalkBounds>();
-            Debug.Log("bounds found? " + (bounds != null));
 
-            if (bounds != null)
-            {
-                Debug.Log("left limit assigned? " + (bounds.leftLimit != null));
-                Debug.Log("right limit assigned? " + (bounds.rightLimit != null));
-            }
 
             if (bounds != null && platformWalk != null &&
                 bounds.leftLimit != null && bounds.rightLimit != null)
             {
-                Debug.Log("Calling EnableWalk");
                 platformWalk.EnableWalk(bounds.leftLimit, bounds.rightLimit);
             }
 
