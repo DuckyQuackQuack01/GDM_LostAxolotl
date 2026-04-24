@@ -9,6 +9,7 @@ public class SlingshotMechanic : MonoBehaviour
     public float maxDragDistance = 3f;
     public float launchPower = 10f;
     public float powerBoost = 1.45f;
+    public float pullCurvePower = 2f;
 
     [Header("Water Settings")]
     public float waterCostMultiplier = 10f;
@@ -23,6 +24,9 @@ public class SlingshotMechanic : MonoBehaviour
     public WaterBarUI waterBarUI;
 
     public bool hasLanded = true;
+    public PlayerPlatformWalk platformWalk;
+
+    public MapViewToggle mapViewToggle;
 
     private GameObject[] dots;
     private Rigidbody2D rb;
@@ -30,9 +34,11 @@ public class SlingshotMechanic : MonoBehaviour
     private Vector2 startPos;
     private Vector2 originalStartPos;
 
+    private Vector2 dragStartMousePos;
+
     private bool isDragging = false;
 
-    private bool onPlatform = true;
+    private bool onPlatform = false;
     private MovingPlatform currentPlatform;
 
     private Transform platformTransform;
@@ -73,14 +79,21 @@ public class SlingshotMechanic : MonoBehaviour
 
     void Update()
     {
+        if (mapViewToggle != null && mapViewToggle.IsMapViewActive)
+        {
+            CancelInteraction();
+            return;
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (hasLanded && WaterManager.Instance.currentWater > 0)
+            if (hasLanded && WaterManager.Instance != null && WaterManager.Instance.currentWater > 0)
             {
                 isDragging = true;
                 rb.linearVelocity = Vector2.zero;
                 rb.angularVelocity = 0f;
+
+                dragStartMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
         }
 
@@ -89,6 +102,11 @@ public class SlingshotMechanic : MonoBehaviour
             Vector3 platformDelta = platformTransform.position - lastPlatformPosition;
             transform.position += platformDelta;
 
+            if (isDragging)
+            {
+                dragStartMousePos += (Vector2)platformDelta;
+            }
+
             lastPlatformPosition = platformTransform.position;
             startPos = transform.position;
         }
@@ -96,24 +114,22 @@ public class SlingshotMechanic : MonoBehaviour
         if (isDragging)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 dragVector = mousePos - startPos;
 
+            Vector2 dragVector = mousePos - dragStartMousePos;
             dragVector = Vector2.ClampMagnitude(dragVector, maxDragDistance);
 
-            Vector2 launchDir = -dragVector;
-            Vector2 velocity = launchDir * launchPower;
-
+            Vector2 velocity = CalculateLaunchVelocity(dragVector);
             DrawTrajectory(velocity);
 
             float dragDistance = dragVector.magnitude;
             float waterCost = Mathf.Min(dragDistance * waterCostMultiplier, maxWaterPerLaunch);
-            float predictedWater = WaterManager.Instance.currentWater - waterCost;
-
             if (waterBarUI != null)
-                waterBarUI.ShowPreview(predictedWater);
+                waterBarUI.ShowPreviewCost(waterCost);
 
             if (waterBarUI != null && waterBarUI.previewImage != null)
             {
+                float predictedWater = WaterManager.Instance.currentWater - waterCost;
+
                 waterBarUI.previewImage.color =
                     predictedWater < 0 ? Color.red :
                     new Color(0.5f, 0.8f, 1f, 0.6f);
@@ -129,6 +145,24 @@ public class SlingshotMechanic : MonoBehaviour
             Physics2D.gravity = defaultGravity;
             ScoreManager.ResetScore();
         }
+    }
+
+    Vector2 CalculateLaunchVelocity(Vector2 dragVector)
+    {
+        float dragDistance = dragVector.magnitude;
+
+        if (dragDistance <= 0f)
+            return Vector2.zero;
+
+        Vector2 launchDir = -dragVector.normalized;
+
+        float normalizedPull = dragDistance / maxDragDistance;
+        normalizedPull = Mathf.Clamp01(normalizedPull);
+
+        float curvedPull = Mathf.Pow(normalizedPull, pullCurvePower);
+        float finalStrength = launchPower * curvedPull * powerBoost;
+
+        return launchDir * finalStrength;
     }
 
     void HandleLaunch()
@@ -147,10 +181,13 @@ public class SlingshotMechanic : MonoBehaviour
             currentPlatform.RestoreSpeed();
             currentPlatform = null;
         }
+        
+        if (platformWalk != null)
+            platformWalk.DisableWalk();
 
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 dragVector = mousePos - startPos;
 
+        Vector2 dragVector = mousePos - dragStartMousePos;
         dragVector = Vector2.ClampMagnitude(dragVector, maxDragDistance);
 
         float dragDistance = dragVector.magnitude;
@@ -163,7 +200,7 @@ public class SlingshotMechanic : MonoBehaviour
 
         float waterCost = Mathf.Min(dragDistance * waterCostMultiplier, maxWaterPerLaunch);
 
-        if (WaterManager.Instance.currentWater < waterCost)
+        if (WaterManager.Instance == null || WaterManager.Instance.currentWater < waterCost)
         {
             HideDots();
             return;
@@ -171,14 +208,10 @@ public class SlingshotMechanic : MonoBehaviour
 
         WaterManager.Instance.UseWater(waterCost);
 
-        // NEW POWER BOOST SYSTEM
-        float pullPercent = dragVector.magnitude / maxDragDistance;
-        pullPercent = Mathf.Clamp01(pullPercent * powerBoost);
-
-        Vector2 launchDir = -dragVector;
+        Vector2 launchVelocity = CalculateLaunchVelocity(dragVector);
 
         rb.bodyType = RigidbodyType2D.Dynamic;
-        rb.linearVelocity = launchDir * (launchPower * pullPercent);
+        rb.linearVelocity = launchVelocity;
 
         hasLanded = false;
 
@@ -223,8 +256,10 @@ public class SlingshotMechanic : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+
         if (other.CompareTag("PlatformTop"))
         {
+
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
 
@@ -252,9 +287,17 @@ public class SlingshotMechanic : MonoBehaviour
                 lastPlatformPosition = platformTransform.position;
             }
 
-            startPos = transform.position;
 
-            ScoreManager.AddPoint();
+            PlatformWalkBounds bounds = other.GetComponentInParent<PlatformWalkBounds>();
+
+
+            if (bounds != null && platformWalk != null &&
+                bounds.leftLimit != null && bounds.rightLimit != null)
+            {
+                platformWalk.EnableWalk(bounds.leftLimit, bounds.rightLimit);
+            }
+
+            startPos = transform.position;
         }
     }
 
@@ -271,7 +314,9 @@ public class SlingshotMechanic : MonoBehaviour
 
     void HandleFailState()
     {
-        WaterManager.Instance.ResetWater();
+        if (WaterManager.Instance != null)
+            WaterManager.Instance.ResetWater();
+
         hasLanded = true;
 
         if (WaterPickupResetter.Instance != null)
@@ -281,7 +326,6 @@ public class SlingshotMechanic : MonoBehaviour
         rb.angularVelocity = 0f;
 
         transform.position = originalStartPos;
-
         rb.bodyType = RigidbodyType2D.Kinematic;
 
         fellPopup.SetActive(true);
@@ -298,6 +342,9 @@ public class SlingshotMechanic : MonoBehaviour
             currentPlatform = null;
         }
 
+        if (platformWalk != null)
+            platformWalk.DisableWalk();
+
         cameraMovement.ResetCameraRotation();
         Physics2D.gravity = defaultGravity;
 
@@ -308,5 +355,15 @@ public class SlingshotMechanic : MonoBehaviour
     void HideFellPopup()
     {
         fellPopup.SetActive(false);
+    }
+
+    public void CancelInteraction()
+    {
+        isDragging = false;
+
+        if (waterBarUI != null)
+            waterBarUI.ResetPreview();
+
+        HideDots();
     }
 }
