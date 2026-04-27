@@ -28,6 +28,8 @@ public class SlingshotMechanic : MonoBehaviour
 
     public MapViewToggle mapViewToggle;
 
+    public GameObject HowToPlay;
+
     private GameObject[] dots;
     private Rigidbody2D rb;
 
@@ -63,6 +65,9 @@ public class SlingshotMechanic : MonoBehaviour
             dots[i] = Instantiate(dotPrefab, startPos, Quaternion.identity);
             dots[i].SetActive(false);
         }
+
+        if (HowToPlay != null)
+            HowToPlay.SetActive(true);
     }
 
     void OnEnable()
@@ -181,7 +186,7 @@ public class SlingshotMechanic : MonoBehaviour
             currentPlatform.RestoreSpeed();
             currentPlatform = null;
         }
-        
+
         if (platformWalk != null)
             platformWalk.DisableWalk();
 
@@ -207,6 +212,9 @@ public class SlingshotMechanic : MonoBehaviour
         }
 
         WaterManager.Instance.UseWater(waterCost);
+
+        if (HowToPlay != null)
+            HowToPlay.SetActive(false);
 
         Vector2 launchVelocity = CalculateLaunchVelocity(dragVector);
 
