@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1269339402214303883}
   - component: {fileID: -1299380345761251201}
   - component: {fileID: 8076138937226071936}
+  - component: {fileID: 4987599163034690428}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -172,6 +173,7 @@ MonoBehaviour:
   maxDragDistance: 3
   launchPower: 10
   powerBoost: 1.45
+  pullCurvePower: 2
   waterCostMultiplier: 10
   maxWaterPerLaunch: 30
   minDragThreshold: 0.2
@@ -179,6 +181,10 @@ MonoBehaviour:
   dotCount: 40
   dotSpacing: 0.02
   waterBarUI: {fileID: 0}
+  hasLanded: 1
+  platformWalk: {fileID: 0}
+  mapViewToggle: {fileID: 0}
+  HowToPlay: {fileID: 0}
   cameraMovement: {fileID: 0}
   sandstorm: {fileID: 0}
 --- !u!114 &1269339402214303883
@@ -229,3 +235,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: -1299380345761251201}
+--- !u!114 &4987599163034690428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5942484799449099423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ae8800d036d1d4eac0701a50cb1b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  surfaceOffset: 0.02
