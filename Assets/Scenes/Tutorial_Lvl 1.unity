@@ -6031,7 +6031,7 @@ MonoBehaviour:
 
 
     -
-    Watch out for the sandstorm            and cactuses!'
+    Watch out for the sandstorm and cactuses!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c0207198af9a54d4fbebbf4b37a390f9, type: 2}
   m_sharedMaterial: {fileID: 2406340668041004536, guid: c0207198af9a54d4fbebbf4b37a390f9, type: 2}
@@ -6040,8 +6040,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294961920
+  m_fontColor: {r: 0, g: 0.9226117, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
