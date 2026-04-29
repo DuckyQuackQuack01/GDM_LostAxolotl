@@ -13,7 +13,7 @@ public class PlayerAnimationController : MonoBehaviour
     Vector3 startMousePosition;
 
     public Animator anim;
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,11 +27,15 @@ public class PlayerAnimationController : MonoBehaviour
         AnimatorStateInfo animState = anim.GetCurrentAnimatorStateInfo(0);
         currentVelocity = rb.linearVelocity;
 
-        UpdateRotation();
+        if (currentVelocity.magnitude != 0)
+        {
+            UpdateRotation();
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
-            startMousePosition = Input.mousePosition;
+            startMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            ResetRotation();
         }
         else if (Input.GetMouseButtonUp(0))
         {
@@ -47,39 +51,44 @@ public class PlayerAnimationController : MonoBehaviour
         }
     }
 
-    void UpdateRotation()
+    private void UpdateRotation()
     {
         float angle = Mathf.Atan2(currentVelocity.y, currentVelocity.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
+    private void ResetRotation()
+    {
+        transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+    }
+
     private void UpdateSlingshot()
     {
-        Vector2 directionAway = startMousePosition - Input.mousePosition;
+        Vector3 directionAway = startMousePosition - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         UpdateSlingshotRotation(directionAway);
         UpdateSlingshotAnimation(directionAway);
     }
-    private void OnMouseRelease()
-    {
-        anim.Play("StartingToFly");
-    }
+
 
     private void UpdateSlingshotRotation(Vector2 directionAway)
     {
-
         float angle = Mathf.Atan2(directionAway.y, directionAway.x) * Mathf.Rad2Deg;
-
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private void UpdateSlingshotAnimation(Vector2 directionAway)
     {
-        float percentage = directionAway.magnitude / 100;
+        float percentage = directionAway.magnitude;
         if (percentage > 0.99f)
         {
             percentage = 0.99f;
         }
         anim.Play("ReadyingSlingshot", 0, percentage);
+    }
+
+    private void OnMouseRelease()
+    {
+        anim.Play("StartingToFly");
     }
 
     private void PlayIdleAnim()
