@@ -1374,6 +1374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxWater: 100
   currentWater: 0
+  drainDuration: 60
 --- !u!4 &421897915
 Transform:
   m_ObjectHideFlags: 0
