@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Specialized;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -13,7 +14,18 @@ public class PlayerAnimationController : MonoBehaviour
     Vector3 startMousePosition;
 
     public Animator anim;
-    
+    AnimatorStateInfo animState;
+
+    bool onPlatform = false;
+
+
+    // player state Bools
+    bool isFlying => currentVelocity.magnitude != 0;
+    bool isReadyingSlingShot => Input.GetMouseButton(0) && currentVelocity == Vector2.zero;
+    bool isIdle => currentVelocity == Vector2.zero && !animState.IsName("Idle");
+    bool isWalking => onPlatform && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && !animState.IsName("Walking");
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,10 +36,10 @@ public class PlayerAnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AnimatorStateInfo animState = anim.GetCurrentAnimatorStateInfo(0);
+        animState = anim.GetCurrentAnimatorStateInfo(0);
         currentVelocity = rb.linearVelocity;
-
-        if (currentVelocity.magnitude != 0)
+        
+        if (isFlying)
         {
             UpdateRotation();
         }
@@ -41,13 +53,20 @@ public class PlayerAnimationController : MonoBehaviour
         {
             OnMouseRelease();
         }
-        if (Input.GetMouseButton(0) && currentVelocity == Vector2.zero)
+        if (isReadyingSlingShot)
         {
             UpdateSlingshot();
         }
-        else if (currentVelocity == Vector2.zero && !animState.IsName("Idle"))
+        else if (isIdle && !isWalking)
         {
             PlayIdleAnim();
+            Debug.Log("Playing Idle Anim");
+        }
+
+        if (isWalking)
+        {
+            PlayWalkingAnim();
+            Debug.Log("Trying to walk");
         }
     }
 
@@ -62,6 +81,7 @@ public class PlayerAnimationController : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
     }
 
+    
     private void UpdateSlingshot()
     {
         Vector3 directionAway = startMousePosition - Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -69,13 +89,14 @@ public class PlayerAnimationController : MonoBehaviour
         UpdateSlingshotAnimation(directionAway);
     }
 
-
+    // changes the players rotation to face direction of slingshot
     private void UpdateSlingshotRotation(Vector2 directionAway)
     {
         float angle = Mathf.Atan2(directionAway.y, directionAway.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
+    // updates the slingshot animation based on how far they are pulling the slingshot
     private void UpdateSlingshotAnimation(Vector2 directionAway)
     {
         float percentage = directionAway.magnitude;
@@ -89,11 +110,29 @@ public class PlayerAnimationController : MonoBehaviour
     private void OnMouseRelease()
     {
         anim.Play("StartingToFly");
+        onPlatform = false;
     }
 
     private void PlayIdleAnim()
     {
+        // Checking that idle isn't already playing and player isn't walking
+
         anim.Play("Idle");
     }
-    
+
+    private void PlayWalkingAnim()
+    {
+        anim.Play("Walking");
+    }
+
+    // used to change onPlatform bool when player is on a platform.
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("PlatformTop"))
+        {
+            onPlatform = true;
+            Debug.Log("onPlatform");
+        }
+    }
+
 }
