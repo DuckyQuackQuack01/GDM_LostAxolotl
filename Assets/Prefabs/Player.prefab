@@ -171,6 +171,7 @@ MonoBehaviour:
   fellPopup: {fileID: 0}
   maxDragDistance: 3
   launchPower: 10
+  powerBoost: 1.45
   waterCostMultiplier: 10
   maxWaterPerLaunch: 30
   minDragThreshold: 0.2
@@ -203,7 +204,7 @@ Animator:
   m_GameObject: {fileID: 5942484799449099423}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: -1388329486832285142, guid: cce6a29fba692bd4a9743081b5e1e46c, type: 3}
+  m_Controller: {fileID: 9100000, guid: ca9c9e723a320a647b91aec80bf08568, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
