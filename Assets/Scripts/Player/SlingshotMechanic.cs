@@ -221,6 +221,9 @@ public class SlingshotMechanic : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.linearVelocity = launchVelocity;
 
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayJump();
+
         hasLanded = false;
 
         HideDots();
@@ -265,11 +268,14 @@ public class SlingshotMechanic : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (other.CompareTag("PlatformTop"))
+        if (other.CompareTag("PlatformTop") && !hasLanded)
         {
 
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
+
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlayStick();
 
             rb.bodyType = RigidbodyType2D.Kinematic;
 
@@ -322,6 +328,10 @@ public class SlingshotMechanic : MonoBehaviour
 
     void HandleFailState()
     {
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayDeath();
+
         if (WaterManager.Instance != null)
             WaterManager.Instance.ResetWater();
 
