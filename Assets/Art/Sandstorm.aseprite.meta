@@ -76,8 +76,8 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 0
-    customPivotPosition: {x: 0.5, y: 0.5}
+    defaultPivotAlignment: 9
+    customPivotPosition: {x: 0.49, y: 0.47}
     mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
@@ -89,8 +89,8 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 0
-    customPivotPosition: {x: 0.5, y: 0.5}
+    defaultPivotAlignment: 9
+    customPivotPosition: {x: 0.49, y: 0.47}
     mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
@@ -98,7 +98,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639130924659897226
+  platformSettingsDirtyTick: 639130969013206621
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -125,7 +125,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Sandstorm
     originalName: 
-    pivot: {x: 0.48299322, y: 0.48979592}
+    pivot: {x: 0.47210887, y: 0.45714286}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
