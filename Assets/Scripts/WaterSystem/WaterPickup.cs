@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class WaterPickup : MonoBehaviour
 {
@@ -12,6 +13,13 @@ public class WaterPickup : MonoBehaviour
     {
         anim = GetComponent<Animator>();
     }
+
+    IEnumerator DisableAfterAnimation()
+    {
+        yield return new WaitForSeconds(0.3f);
+        gameObject.SetActive(false);
+    }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -28,7 +36,7 @@ public class WaterPickup : MonoBehaviour
         if (anim != null)
         {
             anim.Play("DropletPickup");
-            Destroy(gameObject, 0.3f);
+            StartCoroutine(DisableAfterAnimation());
         }
         else
         {
