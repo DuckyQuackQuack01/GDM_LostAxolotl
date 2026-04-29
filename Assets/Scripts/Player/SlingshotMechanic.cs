@@ -213,6 +213,8 @@ public class SlingshotMechanic : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.linearVelocity = launchVelocity;
 
+        AudioManager.Instance.PlayJump();
+
         hasLanded = false;
 
         HideDots();
@@ -262,6 +264,8 @@ public class SlingshotMechanic : MonoBehaviour
 
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
+
+            AudioManager.Instance.PlayStick();
 
             rb.bodyType = RigidbodyType2D.Kinematic;
 
@@ -314,6 +318,11 @@ public class SlingshotMechanic : MonoBehaviour
 
     void HandleFailState()
     {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayDeath();
+        }
+
         if (WaterManager.Instance != null)
             WaterManager.Instance.ResetWater();
 
