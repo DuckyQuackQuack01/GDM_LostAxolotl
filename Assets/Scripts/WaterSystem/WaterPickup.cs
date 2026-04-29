@@ -2,13 +2,16 @@ using UnityEngine;
 
 public class WaterPickup : MonoBehaviour
 {
-    [Header("Water Value")]
     public float waterAmount = 20f;
-
-    [Header("Effects")]
     public GameObject pickupEffect;
 
     private bool collected = false;
+    private Animator anim;
+
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -20,11 +23,17 @@ public class WaterPickup : MonoBehaviour
         WaterManager.Instance.AddWater(waterAmount);
 
         if (pickupEffect != null)
-        {
             Instantiate(pickupEffect, transform.position, Quaternion.identity);
-        }
 
-        gameObject.SetActive(false);
+        if (anim != null)
+        {
+            anim.Play("DropletPickup");
+            Destroy(gameObject, 0.3f);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public void ResetPickup()
