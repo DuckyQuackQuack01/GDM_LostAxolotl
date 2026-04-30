@@ -5257,10 +5257,10 @@ MonoBehaviour:
     destinationPoint: {fileID: 664589218}
   - sceneName: Level2_Sergio
     destinationPoint: {fileID: 1255000809}
-  - sceneName: Level3_Sinan
-    destinationPoint: {fileID: 1872673934}
   - sceneName: Level_Ethan
     destinationPoint: {fileID: 1628936978}
+  - sceneName: Level5_Sinan
+    destinationPoint: {fileID: 131947565}
 --- !u!114 &1438866676
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ public class SlingshotMechanic : MonoBehaviour
 
     private Vector2 dragStartMousePos;
 
-    private bool isDragging = false;
+    public bool isDragging = false;
 
     private bool onPlatform = false;
     private MovingPlatform currentPlatform;
@@ -84,6 +84,12 @@ public class SlingshotMechanic : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0f)
+        {
+            CancelInteraction();
+            return;
+        }
+
         if (mapViewToggle != null && mapViewToggle.IsMapViewActive)
         {
             CancelInteraction();

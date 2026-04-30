@@ -5,6 +5,10 @@ public class PlayerPlatformWalk : MonoBehaviour
     public float moveSpeed = 3f;
     public float surfaceOffset = 0.02f;
 
+    public Transform spriteTransform;
+
+    public SlingshotMechanic slingshot;
+
     private bool canWalk = false;
     private Transform leftLimit;
     private Transform rightLimit;
@@ -37,6 +41,7 @@ public class PlayerPlatformWalk : MonoBehaviour
             currentT = 0f;
         }
 
+        AlignToPlatform();
         UpdatePlayerPosition();
     }
 
@@ -53,16 +58,23 @@ public class PlayerPlatformWalk : MonoBehaviour
             return;
 
         if (leftLimit == null || rightLimit == null)
-        {
             return;
-        }
+
+        if (slingshot != null && slingshot.isDragging)
+            return;
 
         float moveInput = 0f;
 
         if (Input.GetKey(KeyCode.A))
+        {
             moveInput = -1f;
+            Flip(false);
+        }
         else if (Input.GetKey(KeyCode.D))
+        {
             moveInput = 1f;
+            Flip(true);
+        }
 
         Vector2 leftPos = leftLimit.position;
         Vector2 rightPos = rightLimit.position;
@@ -74,6 +86,7 @@ public class PlayerPlatformWalk : MonoBehaviour
         float deltaT = (moveInput * moveSpeed * Time.deltaTime) / platformLength;
         currentT = Mathf.Clamp01(currentT + deltaT);
 
+        AlignToPlatform();
         UpdatePlayerPosition();
     }
 
@@ -93,5 +106,27 @@ public class PlayerPlatformWalk : MonoBehaviour
         Vector2 finalPos = pointOnPlatform + platformNormal * surfaceOffset;
 
         transform.position = new Vector3(finalPos.x, finalPos.y, transform.position.z);
+    }
+
+    void AlignToPlatform()
+    {
+        Vector2 leftPos = leftLimit.position;
+        Vector2 rightPos = rightLimit.position;
+
+        Vector2 platformDir = rightPos - leftPos;
+
+        float angle = Mathf.Atan2(platformDir.y, platformDir.x) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+    }
+
+    void Flip(bool facingRight)
+    {
+        if (spriteTransform == null)
+            return;
+
+        Vector3 scale = spriteTransform.localScale;
+        scale.x = Mathf.Abs(scale.x) * (facingRight ? 1 : -1);
+        spriteTransform.localScale = scale;
     }
 }
