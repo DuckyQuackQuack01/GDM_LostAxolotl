@@ -125,7 +125,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Oasis
     originalName: 
-    pivot: {x: 0.5862069, y: 0.43010753}
+    pivot: {x: 0.5862069, y: 0.4803922}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -134,7 +134,7 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 87
-      height: 93
+      height: 102
     spriteID: 396fdbe68d068334f9861bb48ae910f8
     spriteBone: []
     spriteOutline: []
@@ -163,9 +163,9 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 13
-        y: 24
+        y: 15
         width: 87
-        height: 93
+        height: 102
       spriteId: 396fdbe68d068334f9861bb48ae910f8
     linkedCells: []
     parentIndex: -1
