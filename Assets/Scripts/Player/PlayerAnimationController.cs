@@ -22,8 +22,8 @@ public class PlayerAnimationController : MonoBehaviour
     // player state Bools
     bool isFlying => currentVelocity.magnitude != 0;
     bool isReadyingSlingShot => Input.GetMouseButton(0) && currentVelocity == Vector2.zero;
-    bool isIdle => currentVelocity == Vector2.zero && !animState.IsName("Idle");
-    bool isWalking => onPlatform && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && !animState.IsName("Walking");
+    bool isIdle => currentVelocity == Vector2.zero;
+    bool isWalking => onPlatform && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D));
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -57,16 +57,15 @@ public class PlayerAnimationController : MonoBehaviour
         {
             UpdateSlingshot();
         }
-        else if (isIdle && !isWalking)
-        {
-            PlayIdleAnim();
-            Debug.Log("Playing Idle Anim");
-        }
-
-        if (isWalking)
+        else if (isWalking)
         {
             PlayWalkingAnim();
             Debug.Log("Trying to walk");
+        }
+        else if (isIdle)
+        {
+            PlayIdleAnim();
+            Debug.Log("Playing Idle Anim");
         }
     }
 
