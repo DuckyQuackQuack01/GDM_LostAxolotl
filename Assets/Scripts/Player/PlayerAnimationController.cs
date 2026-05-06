@@ -41,6 +41,7 @@ public class PlayerAnimationController : MonoBehaviour
         {
             OnMouseRelease();
         }
+
         if (Input.GetMouseButton(0) && currentVelocity == Vector2.zero)
         {
             UpdateSlingshot();
@@ -57,6 +58,7 @@ public class PlayerAnimationController : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
+
     private void ResetRotation()
     {
         transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
@@ -65,6 +67,7 @@ public class PlayerAnimationController : MonoBehaviour
     private void UpdateSlingshot()
     {
         Vector3 directionAway = startMousePosition - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        UpdateRotation();
         UpdateSlingshotRotation(directionAway);
         UpdateSlingshotAnimation(directionAway);
     }
