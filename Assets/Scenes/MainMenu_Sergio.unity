@@ -5057,9 +5057,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDuration: 1.5
-  startPosition: {x: 0, y: 0, z: 0}
-  targetPosition: {x: 0, y: 0, z: 0}
-  sceneToLoad: 
 --- !u!1 &1397517991
 GameObject:
   m_ObjectHideFlags: 0
@@ -5260,6 +5257,8 @@ MonoBehaviour:
     destinationPoint: {fileID: 664589218}
   - sceneName: Level2_Sergio
     destinationPoint: {fileID: 1255000809}
+  - sceneName: Level3_Liam
+    destinationPoint: {fileID: 1872673934}
   - sceneName: Level_Ethan
     destinationPoint: {fileID: 1628936978}
   - sceneName: Level5_Sinan
