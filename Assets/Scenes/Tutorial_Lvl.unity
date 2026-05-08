@@ -2952,9 +2952,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "How To Play:\n\n- Click 'n' Drag anywhere on the screen to launch the
-    axolotl to the next platform.\n\n- The further you pull back, the more water
-    taken away from your waterbar.\n\n- Pick Up Water Droplets to refill your waterbar.\n\n-
-    Reach the pond at the end to pass!\n Good Luck & Stay Moist!\n\n"
+    axolotl to the next platform. Use the A & D keys when on a platform to move left
+    and right.\n\n- The further you pull back, the more water taken away from your
+    waterbar.\n\n- Pick Up Water Droplets to refill your waterbar.\n\n- Reach the
+    pond at the end to pass!\n Good Luck & Stay Moist!\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c0207198af9a54d4fbebbf4b37a390f9, type: 2}
   m_sharedMaterial: {fileID: 2406340668041004536, guid: c0207198af9a54d4fbebbf4b37a390f9, type: 2}
