@@ -796,6 +796,7 @@ GameObject:
   - component: {fileID: 463802339}
   - component: {fileID: 463802338}
   - component: {fileID: 463802340}
+  - component: {fileID: 463802341}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Ground
@@ -919,6 +920,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &463802341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463802337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5468885dec443e68ab993552e88225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 3b793e1407c208d4ab738e83db7c5c31, type: 3}
 --- !u!1 &483458927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,6 +1121,7 @@ GameObject:
   - component: {fileID: 589045399}
   - component: {fileID: 589045398}
   - component: {fileID: 589045397}
+  - component: {fileID: 589045400}
   m_Layer: 0
   m_Name: Ground (3)
   m_TagString: Ground
@@ -1230,6 +1245,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 179798124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &589045400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589045396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5468885dec443e68ab993552e88225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 3b793e1407c208d4ab738e83db7c5c31, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2265,6 +2293,7 @@ GameObject:
   - component: {fileID: 1135300500}
   - component: {fileID: 1135300499}
   - component: {fileID: 1135300498}
+  - component: {fileID: 1135300501}
   m_Layer: 0
   m_Name: Ground (2)
   m_TagString: Ground
@@ -2388,6 +2417,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 179798124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.014}
+--- !u!114 &1135300501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135300497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5468885dec443e68ab993552e88225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 3b793e1407c208d4ab738e83db7c5c31, type: 3}
 --- !u!1 &1191841415
 GameObject:
   m_ObjectHideFlags: 0
@@ -2430,6 +2472,7 @@ GameObject:
   - component: {fileID: 1352608656}
   - component: {fileID: 1352608655}
   - component: {fileID: 1352608654}
+  - component: {fileID: 1352608657}
   m_Layer: 0
   m_Name: Ground (1)
   m_TagString: Ground
@@ -2553,6 +2596,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 179798124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.014}
+--- !u!114 &1352608657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352608653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5468885dec443e68ab993552e88225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 3b793e1407c208d4ab738e83db7c5c31, type: 3}
 --- !u!1 &1377875027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2783,7 +2839,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 1
+  m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -2952,9 +3008,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "How To Play:\n\n- Click 'n' Drag anywhere on the screen to launch the
-    axolotl to the next platform.\n\n- The further you pull back, the more water
-    taken away from your waterbar.\n\n- Pick Up Water Droplets to refill your waterbar.\n\n-
-    Reach the pond at the end to pass!\n Good Luck & Stay Moist!\n\n"
+    axolotl to the next platform. Use the A & D keys when on a platform to move left
+    and right.\n\n- The further you pull back, the more water taken away from your
+    waterbar.\n\n- Pick Up Water Droplets to refill your waterbar.\n\n- Reach the
+    pond at the end to pass!\n Good Luck & Stay Moist!\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c0207198af9a54d4fbebbf4b37a390f9, type: 2}
   m_sharedMaterial: {fileID: 2406340668041004536, guid: c0207198af9a54d4fbebbf4b37a390f9, type: 2}
@@ -3833,6 +3890,10 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: -0.008234024
       objectReference: {fileID: 0}
+    - target: {fileID: 3317805959241150049, guid: 6a89ab45e7dfee54195fac9840ca17d1, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 3b44431b58a5d294f95b0d46a02fdcba, type: 3}
     - target: {fileID: 5642735750863150819, guid: 6a89ab45e7dfee54195fac9840ca17d1, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7
