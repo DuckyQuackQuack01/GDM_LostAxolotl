@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3317805959241150049}
   - component: {fileID: 7453840549324085839}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: WaterBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +150,7 @@ Animator:
   m_GameObject: {fileID: 6506125690277555732}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8083e69cdf444434d9235beb4b96a923, type: 2}
+  m_Controller: {fileID: -7552577515798215047, guid: c7eff0bb513634640a8f50534a99d9e5, type: 3}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

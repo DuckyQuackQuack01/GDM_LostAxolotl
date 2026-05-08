@@ -4100,10 +4100,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingPlatform
       objectReference: {fileID: 0}
-    - target: {fileID: 1609964644336188164, guid: c6f2b171803b14fb2b508e8c7e2c468e, type: 3}
-      propertyPath: m_TagString
-      value: PlatformTop
-      objectReference: {fileID: 0}
     - target: {fileID: 7651553997939108473, guid: c6f2b171803b14fb2b508e8c7e2c468e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4549,10 +4545,6 @@ PrefabInstance:
     - target: {fileID: 1609964644336188164, guid: c6f2b171803b14fb2b508e8c7e2c468e, type: 3}
       propertyPath: m_Name
       value: FallingPlatform
-      objectReference: {fileID: 0}
-    - target: {fileID: 1609964644336188164, guid: c6f2b171803b14fb2b508e8c7e2c468e, type: 3}
-      propertyPath: m_TagString
-      value: PlatformTop
       objectReference: {fileID: 0}
     - target: {fileID: 7651553997939108473, guid: c6f2b171803b14fb2b508e8c7e2c468e, type: 3}
       propertyPath: m_LocalPosition.x
