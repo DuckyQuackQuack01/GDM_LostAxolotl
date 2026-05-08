@@ -8,7 +8,6 @@ public class PlayerAnimationController : MonoBehaviour
 {
     Rigidbody2D rb;
     Vector2 currentVelocity;
-    float rotationSpeed;
 
     Vector3 startMousePosition;
 
@@ -18,7 +17,6 @@ public class PlayerAnimationController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rotationSpeed = 1f;
     }
 
     // Update is called once per frame
@@ -62,6 +60,8 @@ public class PlayerAnimationController : MonoBehaviour
     private void ResetRotation()
     {
         transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+        Transform spriteTransform = transform.Find("Sprite");
+        spriteTransform.localScale = Vector3.one;
     }
 
     private void UpdateSlingshot()
