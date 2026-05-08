@@ -32,9 +32,7 @@ public class TumbleweedSpawner : MonoBehaviour
     private void UpdateTumbleweedPosition(GameObject tumbleweedTransform, int distanceNumerator)
     {
         float distanceFraction = (float)distanceNumerator / (TumbleweedTotal);
-        Debug.Log("moving tumbleweed to " + distanceFraction);
         Vector3 newPosition = Vector3.Lerp(templateTransform.position, Sandstorm.position, distanceFraction);
-        Debug.Log("moving tumblweed " + distanceNumerator + " to " + newPosition);
         tumbleweedTransform.transform.position = newPosition;
     }
 

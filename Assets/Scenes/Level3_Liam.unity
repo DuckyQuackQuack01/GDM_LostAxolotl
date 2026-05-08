@@ -2636,11 +2636,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5642735750863150819, guid: 6a89ab45e7dfee54195fac9840ca17d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.98
+      value: 10.47
       objectReference: {fileID: 0}
     - target: {fileID: 5642735750863150819, guid: 6a89ab45e7dfee54195fac9840ca17d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.05
+      value: -0.98
       objectReference: {fileID: 0}
     - target: {fileID: 5642735750863150819, guid: 6a89ab45e7dfee54195fac9840ca17d1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4116,11 +4116,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4720811642099204546, guid: bdb84c64eef79417a9aa37c97fdd58ae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.93
+      value: -1.98
       objectReference: {fileID: 0}
     - target: {fileID: 4720811642099204546, guid: bdb84c64eef79417a9aa37c97fdd58ae, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 2.13
       objectReference: {fileID: 0}
     - target: {fileID: 4720811642099204546, guid: bdb84c64eef79417a9aa37c97fdd58ae, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4231,14 +4231,6 @@ PrefabInstance:
       propertyPath: sandstormCentre
       value: 
       objectReference: {fileID: 1654855823}
-    - target: {fileID: 7902564895888193625, guid: c6f2b171803b14fb2b508e8c7e2c468e, type: 3}
-      propertyPath: maxSpeed
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 7902564895888193625, guid: c6f2b171803b14fb2b508e8c7e2c468e, type: 3}
-      propertyPath: minSpeed
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 7956118304413325603, guid: c6f2b171803b14fb2b508e8c7e2c468e, type: 3}
       propertyPath: m_Size.x
       value: 0.8
@@ -5121,7 +5113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6506108589961195270, guid: 3fb73cf38766fb14299d23fa6eda51be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.35
+      value: 1.56
       objectReference: {fileID: 0}
     - target: {fileID: 6506108589961195270, guid: 3fb73cf38766fb14299d23fa6eda51be, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5133,6 +5125,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8797447923465690329, guid: 3fb73cf38766fb14299d23fa6eda51be, type: 3}
       propertyPath: slowSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797447923465690329, guid: 3fb73cf38766fb14299d23fa6eda51be, type: 3}
+      propertyPath: normalSpeed
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -21141,6 +21137,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sandstorm KillZone
       objectReference: {fileID: 0}
+    - target: {fileID: 8444558913028645554, guid: f4f84666c9c67784a9a2d939cd8935fd, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21564,7 +21564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TumbleweedTemplate: {fileID: 1131892491}
   Sandstorm: {fileID: 1654855823}
-  TumbleweedTotal: 3
+  TumbleweedTotal: 4
 --- !u!4 &1790042648
 Transform:
   m_ObjectHideFlags: 0
@@ -22286,10 +22286,6 @@ PrefabInstance:
       propertyPath: slingshot
       value: 
       objectReference: {fileID: 782345252}
-    - target: {fileID: 4987599163034690428, guid: cc39c6665f765344ea82a7d93fd35700, type: 3}
-      propertyPath: spriteTransform
-      value: 
-      objectReference: {fileID: 782345255}
     - target: {fileID: 5942484799449099423, guid: cc39c6665f765344ea82a7d93fd35700, type: 3}
       propertyPath: m_Name
       value: Player (1)

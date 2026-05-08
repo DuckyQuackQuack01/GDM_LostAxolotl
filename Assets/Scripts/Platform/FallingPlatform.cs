@@ -10,7 +10,6 @@ public class FallingPlatform : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("startPosition = " + startPosition);
         if (startPosition == null) startPosition = transform.position;
     }
 
