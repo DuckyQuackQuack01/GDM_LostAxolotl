@@ -7516,11 +7516,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4720811642099204546, guid: bdb84c64eef79417a9aa37c97fdd58ae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.13
+      value: -2.08
       objectReference: {fileID: 0}
     - target: {fileID: 4720811642099204546, guid: bdb84c64eef79417a9aa37c97fdd58ae, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.54
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 4720811642099204546, guid: bdb84c64eef79417a9aa37c97fdd58ae, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7665,10 +7665,6 @@ PrefabInstance:
     - target: {fileID: 4687207135824951982, guid: cc39c6665f765344ea82a7d93fd35700, type: 3}
       propertyPath: waterCostMultiplier
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5316340598243343338, guid: cc39c6665f765344ea82a7d93fd35700, type: 3}
-      propertyPath: m_UseFullKinematicContacts
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5942484799449099423, guid: cc39c6665f765344ea82a7d93fd35700, type: 3}
       propertyPath: m_Name
