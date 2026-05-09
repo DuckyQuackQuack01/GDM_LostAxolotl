@@ -6437,7 +6437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6943697163560130381, guid: f4f84666c9c67784a9a2d939cd8935fd, type: 3}
       propertyPath: m_Radius
-      value: 0.74
+      value: 1.07
       objectReference: {fileID: 0}
     - target: {fileID: 6943697163560130381, guid: f4f84666c9c67784a9a2d939cd8935fd, type: 3}
       propertyPath: m_IsTrigger
@@ -7520,7 +7520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4720811642099204546, guid: bdb84c64eef79417a9aa37c97fdd58ae, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.94
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 4720811642099204546, guid: bdb84c64eef79417a9aa37c97fdd58ae, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7666,10 +7666,6 @@ PrefabInstance:
       propertyPath: waterCostMultiplier
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 4987599163034690428, guid: cc39c6665f765344ea82a7d93fd35700, type: 3}
-      propertyPath: slingshot
-      value: 
-      objectReference: {fileID: 782345252}
     - target: {fileID: 5942484799449099423, guid: cc39c6665f765344ea82a7d93fd35700, type: 3}
       propertyPath: m_Name
       value: Player (1)
