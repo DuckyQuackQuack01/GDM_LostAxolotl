@@ -45,7 +45,11 @@ public class PlayerAnimationController : MonoBehaviour
         if (Input.GetMouseButton(0) && currentVelocity == Vector2.zero)
         {
             UpdateSlingshot();
-        } 
+        }
+        else if (currentVelocity.magnitude == 0 && !animState.IsName("Walking"))
+        {
+            PlayIdleAnim();
+        }
     }
 
     private void UpdateRotation()
