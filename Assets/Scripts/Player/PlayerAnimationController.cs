@@ -12,7 +12,9 @@ public class PlayerAnimationController : MonoBehaviour
     Vector3 startMousePosition;
 
     public Animator anim;
-    
+
+    private AnimatorStateInfo animState;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,7 +24,7 @@ public class PlayerAnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AnimatorStateInfo animState = anim.GetCurrentAnimatorStateInfo(0);
+        animState = anim.GetCurrentAnimatorStateInfo(0);
         currentVelocity = rb.linearVelocity;
 
         if (currentVelocity.magnitude != 0)
@@ -43,11 +45,7 @@ public class PlayerAnimationController : MonoBehaviour
         if (Input.GetMouseButton(0) && currentVelocity == Vector2.zero)
         {
             UpdateSlingshot();
-        }
-        else if (currentVelocity == Vector2.zero && !animState.IsName("Idle"))
-        {
-            PlayIdleAnim();
-        }
+        } 
     }
 
     private void UpdateRotation()
@@ -96,7 +94,28 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void PlayIdleAnim()
     {
-        anim.Play("Idle");
+        if (!animState.IsName("Idle")) {
+            anim.Play("Idle");
+        }
     }
-    
+
+    private void PlayWalkAnim()
+    {
+        if (!animState.IsName("Walking"))
+        {
+            anim.Play("Walking");
+        }
+    }
+
+    public void updateToWalk(bool isWalking)
+    {
+        if (isWalking)
+        {
+            PlayWalkAnim();
+        }
+        else
+        {
+            PlayIdleAnim();
+        }
+    }
 }

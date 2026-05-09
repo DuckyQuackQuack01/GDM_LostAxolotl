@@ -15,6 +15,9 @@ public class PlayerPlatformWalk : MonoBehaviour
 
     private float currentT = 0f;
 
+    [SerializeField] private PlayerAnimationController animController;
+
+    
     public void EnableWalk(Transform leftEdge, Transform rightEdge)
     {
         canWalk = true;
@@ -67,13 +70,19 @@ public class PlayerPlatformWalk : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
+            animController.updateToWalk(true);
             moveInput = -1f;
             Flip(false);
         }
         else if (Input.GetKey(KeyCode.D))
         {
+            animController.updateToWalk(true);
             moveInput = 1f;
             Flip(true);
+        }
+        else
+        {
+            animController.updateToWalk(false);
         }
 
         Vector2 leftPos = leftLimit.position;

@@ -284,3 +284,4 @@ MonoBehaviour:
   surfaceOffset: 0.02
   spriteTransform: {fileID: 9166514051578159197}
   slingshot: {fileID: 4687207135824951982}
+  animController: {fileID: 8076138937226071936}
