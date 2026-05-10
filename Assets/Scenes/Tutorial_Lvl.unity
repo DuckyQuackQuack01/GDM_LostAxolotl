@@ -2696,6 +2696,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1740721157915146979, guid: 402c7358a9e7e0449b83ccbd0c5a16b3, type: 3}
+      propertyPath: splashEffect
+      value: 
+      objectReference: {fileID: 219136082513032090, guid: 45bf99c8c4af34c40b75fc9d9f774be2, type: 3}
     - target: {fileID: 3588163504555368864, guid: 402c7358a9e7e0449b83ccbd0c5a16b3, type: 3}
       propertyPath: m_Size.x
       value: 2.1129303

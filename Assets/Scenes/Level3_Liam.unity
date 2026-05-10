@@ -2789,6 +2789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f758ccb5ab16be4381c2bac64962152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splashEffect: {fileID: 219136082513032090, guid: 45bf99c8c4af34c40b75fc9d9f774be2, type: 3}
 --- !u!61 &806555437
 BoxCollider2D:
   m_ObjectHideFlags: 0
