@@ -156,6 +156,8 @@ MonoBehaviour:
   death: {fileID: 8300000, guid: 4de76e138928cae439216d2cf156e022, type: 3}
   finish: {fileID: 8300000, guid: 7fec89c17702b8e498543c34a04e81ea, type: 3}
   background: {fileID: 8300000, guid: b561d174cff35de40aa6956a5db2baa7, type: 3}
+  victoryMusic: {fileID: 8300000, guid: a920bafa233b6e840a29ec453a86953c, type: 3}
+  drinking: {fileID: 8300000, guid: e421a99755d4a714680f0343a0407c1d, type: 3}
 --- !u!4 &111480132
 Transform:
   m_ObjectHideFlags: 0
