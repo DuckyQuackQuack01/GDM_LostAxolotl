@@ -5,16 +5,13 @@ public class WaterPickup : MonoBehaviour
 {
     public float waterAmount = 20f;
     public GameObject pickupEffect;
-    public AudioClip pickupSound;
 
     private bool collected = false;
     private Animator anim;
-    private AudioSource audioSource;
 
     void Awake()
     {
         anim = GetComponent<Animator>();
-        audioSource = Camera.main.GetComponent<AudioSource>();
     }
 
     IEnumerator DisableAfterAnimation()
@@ -23,7 +20,8 @@ public class WaterPickup : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player") || collected)
             return;
@@ -34,9 +32,6 @@ public class WaterPickup : MonoBehaviour
 
         if (pickupEffect != null)
             Instantiate(pickupEffect, transform.position, Quaternion.identity);
-
-        if (pickupSound != null && audioSource != null)
-            audioSource.PlayOneShot(pickupSound);
 
         if (anim != null)
         {
@@ -55,4 +50,3 @@ public class WaterPickup : MonoBehaviour
         gameObject.SetActive(true);
     }
 }
-
