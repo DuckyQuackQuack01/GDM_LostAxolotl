@@ -5261,7 +5261,7 @@ MonoBehaviour:
     destinationPoint: {fileID: 1255000809}
   - sceneName: Level3_Liam
     destinationPoint: {fileID: 1872673934}
-  - sceneName: Level_Ethan
+  - sceneName: Level4_Ethan
     destinationPoint: {fileID: 1628936978}
   - sceneName: Level5_Sinan
     destinationPoint: {fileID: 131947565}

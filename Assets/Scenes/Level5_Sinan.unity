@@ -2320,8 +2320,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 146, y: -132}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 213.95483, y: -132}
+  m_SizeDelta: {x: 335.9097, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &414404067
 MonoBehaviour:
@@ -2370,8 +2370,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5103,7 +5103,7 @@ PrefabInstance:
     - target: {fileID: 1269339402214303883, guid: cc39c6665f765344ea82a7d93fd35700, type: 3}
       propertyPath: pauseMenuUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1484365821}
     - target: {fileID: 4687207135824951982, guid: cc39c6665f765344ea82a7d93fd35700, type: 3}
       propertyPath: HowToPlay
       value: 
