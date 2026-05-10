@@ -1,24 +1,22 @@
 using UnityEngine;
-
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-
     [Header("Audio Sources")]
     public AudioSource musicSource;
     public AudioSource sfxSource;
     public AudioSource movementSource;
-
     [Header("Movement Clips")]
     public AudioClip jump;
     public AudioClip stick;
-
     [Header("Game Clips")]
     public AudioClip death;
     public AudioClip finish;
-
     [Header("Music")]
     public AudioClip background;
+    [Header("Victory")]
+    public AudioClip victoryMusic;
+    public AudioClip drinking;
 
     void Awake()
     {
@@ -27,56 +25,57 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-
     void Start()
     {
         if (background != null)
             PlayMusic(background);
     }
-
     public void PlayMusic(AudioClip clip)
     {
         if (clip == null || musicSource == null) return;
-
         musicSource.clip = clip;
         musicSource.loop = true;
         musicSource.Play();
     }
-
+    public void PlayVictoryMusic()
+    {
+        if (victoryMusic == null || musicSource == null) return;
+        musicSource.Stop();
+        musicSource.clip = victoryMusic;
+        musicSource.loop = true;
+        musicSource.Play();
+    }
+    public void PlayDrinking()
+    {
+        if (drinking == null || sfxSource == null) return;
+        sfxSource.PlayOneShot(drinking);
+    }
     public void PlayJump()
     {
         if (jump == null || movementSource == null) return;
-
         movementSource.clip = jump;
         movementSource.loop = false;
         movementSource.Play();
     }
-
     public void PlayStick()
     {
         if (stick == null || movementSource == null) return;
-
-        movementSource.Stop(); // cuts jump
+        movementSource.Stop();
         movementSource.clip = stick;
         movementSource.loop = false;
         movementSource.Play();
     }
-
     public void PlayDeath()
     {
         if (death == null || sfxSource == null) return;
-
         sfxSource.PlayOneShot(death);
     }
-
     public void PlayFinish()
     {
         if (finish == null || sfxSource == null) return;
-
         sfxSource.PlayOneShot(finish);
     }
 }

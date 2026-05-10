@@ -202,7 +202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6462143977891601158, guid: f4f84666c9c67784a9a2d939cd8935fd, type: 3}
       propertyPath: gravityStrength
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4831,7 +4831,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6462143977891601158, guid: f4f84666c9c67784a9a2d939cd8935fd, type: 3}
       propertyPath: gravityStrength
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7030,7 +7030,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6462143977891601158, guid: f4f84666c9c67784a9a2d939cd8935fd, type: 3}
       propertyPath: gravityStrength
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
